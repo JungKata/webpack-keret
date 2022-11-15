@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
         hosszusagSzamitas();
     })
 
+    document.getElementById('darabSzam').addEventListener('click', async () => {
+
+    })
+
 })
 
 async function idezetekLista(){
@@ -51,18 +55,34 @@ async function sorSzamLista(){
 
     for(let s of sorSzam){
         let li = document.createElement('li')
-        li.innerHTML() = s;
+        li.innerHTML = s;
         szoveg.appendChild(li)
         }
 }  
 
 async function hosszusagSzamitas(){
     let response = await fetch('quotes.json')
-    let result = await response.json();
+    let result = await response.json()
+    let hosszDb = []
+
     hosszusag.textContent = ' '
     for(let h of result.quotes){
-       let p = document.createElement('p')
-       p.textContent = h.quote;
-       
+       hosszusag.push(h.quote)
     }
+
+    const elvalaszt = hosszusag.toString().split(' ')
+    for(let d of elvalaszt){
+        hosszDb.push(elvalaszt.map( e => e.length))
+    }
+
+    let tomb = []
+    tomb.push(hosszDb.join(','))
+    document.getElementById('idezetHossz').append(tomb)
+}
+
+async function darabSzamSzerzo(){
+    let response = await fetch('quotes.json')
+    let result = await response.json();
+
+    
 }
