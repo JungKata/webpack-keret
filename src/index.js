@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     document.getElementById('darabSzam').addEventListener('click', async () => {
-
+        let kimenno = document.getElementById('szerzo').value
+        darabSzamSzerzo();
     })
 
 })
@@ -80,9 +81,14 @@ async function hosszusagSzamitas(){
     document.getElementById('idezetHossz').append(tomb)
 }
 
-async function darabSzamSzerzo(){
+async function darabSzamSzerzo(db){
+    document.getElementById()
     let response = await fetch('quotes.json')
     let result = await response.json();
 
-    
+    let szerzoDb = result.quotes.filter((s) => s.author.toLowerCase() === db.toLowerCase())
+
+    document.getElementById('szerzo').value = szerzoDb.length
+    document.getElementById('szerzo').readOnly == true;
+
 }
